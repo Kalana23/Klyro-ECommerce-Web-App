@@ -84,7 +84,7 @@
     },
     {
       id: 8,
-      name: "Ultra-Slim 20000mAh Power Bank",
+      name: "Portable Bluetooth Wireless Speaker",
       price: 39.99,
       category: "Electronics",
       image: "product8.jpg"
