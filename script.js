@@ -711,19 +711,21 @@
   // =========================================================================
   /**
    * Dynamically renders product cards into the DOM
-   * @param {Array} items - List of product objects to render
+   * @param {Array} [items=products] - List of product objects to render (defaults to all products)
    */
-  function renderProducts(items) {
-    if (!productGrid) return;
+  function renderProducts(items = products) {
+    const grid = document.getElementById("product-grid") || productGrid;
+    if (!grid) return;
 
-    productGrid.innerHTML = "";
+    grid.innerHTML = "";
 
     if (!items || items.length === 0) {
-      productGrid.innerHTML = `
+      grid.innerHTML = `
         <div class="empty-products" role="status">
           <p>No products found in this category.</p>
         </div>
       `;
+      const productCountDisplay = document.getElementById("product-count");
       if (productCountDisplay) {
         productCountDisplay.textContent = "Showing 0 products";
       }
@@ -769,11 +771,11 @@
         </div>
       `;
 
-      productGrid.appendChild(card);
+      grid.appendChild(card);
     });
 
     // Attach click events to the dynamically generated "Add to Cart" buttons
-    const addButtons = productGrid.querySelectorAll(".btn-add-cart");
+    const addButtons = grid.querySelectorAll(".btn-add-cart");
     addButtons.forEach((button) => {
       button.addEventListener("click", handleAddToCartButtonClick);
     });
@@ -958,6 +960,24 @@
         }
       }
     });
+    // Global testing and module exports
+    if (typeof globalThis !== "undefined") {
+      globalThis.products = products;
+      globalThis.renderProducts = renderProducts;
+      globalThis.filterProducts = filterProducts;
+      globalThis.addToCart = addToCart;
+    }
+
+    if (typeof module !== "undefined" && module.exports) {
+      module.exports = {
+        products,
+        renderProducts,
+        filterProducts,
+        addToCart,
+        loadCart,
+        saveCart
+      };
+    }
   }
 
   // Execute once DOM is fully ready
@@ -967,3 +987,4 @@
     initApp();
   }
 })();
+
