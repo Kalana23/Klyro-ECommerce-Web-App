@@ -1443,8 +1443,8 @@ body.modal-open {
 /* --------------------------------------------------------------------------
    10. Responsive Media Queries
    -------------------------------------------------------------------------- */
-/* Tablet & Up (>= 640px) */
-@media (min-width: 640px) {
+/* Tablet & Up (>= 600px) */
+@media (min-width: 600px) {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1459,8 +1459,8 @@ body.modal-open {
   }
 }
 
-/* Desktop & Up (>= 900px) */
-@media (min-width: 900px) {
+/* Medium Desktop & Up (>= 860px) */
+@media (min-width: 860px) {
   .site-nav {
     display: block;
   }
@@ -1470,7 +1470,7 @@ body.modal-open {
   }
 
   .product-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .features-grid {
@@ -1487,6 +1487,13 @@ body.modal-open {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+}
+
+/* Large Desktop (>= 1140px) */
+@media (min-width: 1140px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

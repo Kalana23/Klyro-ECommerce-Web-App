@@ -3,7 +3,7 @@
  * HCI Assignment: Universal Design Principles
  * 
  * Features:
- * - 10 Products across 3 Categories ("Electronics", "Clothing", "Groceries")
+ * - 30 Products across 3 Categories (10 Electronics, 10 Clothing, 10 Groceries)
  * - Dynamic product rendering with pure Vanilla JavaScript
  * - Category filtering with accessible ARIA states
  * - Shopping Cart functionality:
@@ -30,13 +30,16 @@
   const CART_STORAGE_KEY = "klyro_cart_items";
 
   // =========================================================================
-  // 1. Product Catalog Data (EXACTLY 10 products, EXACTLY 3 categories)
+  // 1. Product Catalog Data (EXACTLY 30 products: 10 Electronics, 10 Clothing, 10 Groceries)
   // =========================================================================
   const products = [
+    // -------------------------------------------------------------------------
+    // Category: Electronics (10 items: product1.jpg - product10.jpg)
+    // -------------------------------------------------------------------------
     {
       id: 1,
       name: "Wireless Noise-Canceling Headphones",
-      price: 129.99,
+      price: 149.99,
       category: "Electronics",
       image: "product1.jpg"
     },
@@ -49,59 +52,207 @@
     },
     {
       id: 3,
-      name: "Organic Cotton Crewneck T-Shirt",
-      price: 28.00,
-      category: "Clothing",
+      name: "Minimalist Smart Fitness Watch",
+      price: 79.99,
+      category: "Electronics",
       image: "product3.jpg"
     },
     {
       id: 4,
-      name: "Cold-Pressed Extra Virgin Olive Oil",
-      price: 19.99,
-      category: "Groceries",
+      name: "Portable Bluetooth Wireless Speaker",
+      price: 45.00,
+      category: "Electronics",
       image: "product4.jpg"
     },
     {
       id: 5,
-      name: "Smart Fitness Activity Tracker",
-      price: 64.00,
+      name: "True Wireless In-Ear Earbuds",
+      price: 59.95,
       category: "Electronics",
       image: "product5.jpg"
     },
     {
       id: 6,
-      name: "Tailored Linen Casual Shirt",
-      price: 49.95,
-      category: "Clothing",
+      name: "4K Digital Mirrorless Camera",
+      price: 499.00,
+      category: "Electronics",
       image: "product6.jpg"
     },
     {
       id: 7,
-      name: "Artisanal Whole Bean Dark Roast Coffee",
-      price: 16.50,
-      category: "Groceries",
+      name: "Ergonomic Precision Wireless Mouse",
+      price: 34.50,
+      category: "Electronics",
       image: "product7.jpg"
     },
     {
       id: 8,
-      name: "Portable Bluetooth Wireless Speaker",
-      price: 39.99,
+      name: "High-Resolution Studio Audio Monitor",
+      price: 189.00,
       category: "Electronics",
       image: "product8.jpg"
     },
     {
       id: 9,
-      name: "Merino Wool Everyday Socks (3-Pack)",
-      price: 22.00,
-      category: "Clothing",
+      name: "Ultra-Slim Digital Tablet 10-Inch",
+      price: 249.99,
+      category: "Electronics",
       image: "product9.jpg"
     },
     {
       id: 10,
-      name: "Raw Organic Forest Honey",
+      name: "Flagship AMOLED Touch Smartphone",
+      price: 699.00,
+      category: "Electronics",
+      image: "product10.jpg"
+    },
+
+    // -------------------------------------------------------------------------
+    // Category: Clothing (10 items: product11.jpg - product20.jpg)
+    // -------------------------------------------------------------------------
+    {
+      id: 11,
+      name: "Organic Cotton Crewneck T-Shirt",
+      price: 26.00,
+      category: "Clothing",
+      image: "product11.jpg"
+    },
+    {
+      id: 12,
+      name: "Tailored Breathable Linen Casual Shirt",
+      price: 48.50,
+      category: "Clothing",
+      image: "product12.jpg"
+    },
+    {
+      id: 13,
+      name: "Merino Wool Everyday Socks (3-Pack)",
+      price: 18.00,
+      category: "Clothing",
+      image: "product13.jpg"
+    },
+    {
+      id: 14,
+      name: "Vintage Classic Denim Jacket",
+      price: 85.00,
+      category: "Clothing",
+      image: "product14.jpg"
+    },
+    {
+      id: 15,
+      name: "Slim-Fit Stretch Chino Trousers",
+      price: 55.00,
+      category: "Clothing",
+      image: "product15.jpg"
+    },
+    {
+      id: 16,
+      name: "Cozy Knit Cashmere Blend Sweater",
+      price: 72.00,
+      category: "Clothing",
+      image: "product16.jpg"
+    },
+    {
+      id: 17,
+      name: "Classic Low-Top Canvas Sneakers",
+      price: 62.00,
+      category: "Clothing",
+      image: "product17.jpg"
+    },
+    {
+      id: 18,
+      name: "All-Weather Minimalist Windbreaker",
+      price: 94.00,
+      category: "Clothing",
+      image: "product18.jpg"
+    },
+    {
+      id: 19,
+      name: "Structured Washed Cotton Baseball Cap",
+      price: 22.50,
+      category: "Clothing",
+      image: "product19.jpg"
+    },
+    {
+      id: 20,
+      name: "Full-Grain Leather Bi-Fold Wallet",
+      price: 38.00,
+      category: "Clothing",
+      image: "product20.jpg"
+    },
+
+    // -------------------------------------------------------------------------
+    // Category: Groceries (10 items: product21.jpg - product30.jpg)
+    // -------------------------------------------------------------------------
+    {
+      id: 21,
+      name: "Cold-Pressed Extra Virgin Olive Oil",
+      price: 19.95,
+      category: "Groceries",
+      image: "product21.jpg"
+    },
+    {
+      id: 22,
+      name: "Artisanal Whole Bean Dark Roast Coffee",
+      price: 16.50,
+      category: "Groceries",
+      image: "product22.jpg"
+    },
+    {
+      id: 23,
+      name: "Raw Organic Forest Wildflower Honey",
       price: 14.50,
       category: "Groceries",
-      image: "product10.jpg"
+      image: "product23.jpg"
+    },
+    {
+      id: 24,
+      name: "Organic Fresh Hass Avocados (Pack of 4)",
+      price: 8.99,
+      category: "Groceries",
+      image: "product24.jpg"
+    },
+    {
+      id: 25,
+      name: "Artisanal Stone-Ground Sourdough Bread",
+      price: 6.50,
+      category: "Groceries",
+      image: "product25.jpg"
+    },
+    {
+      id: 26,
+      name: "Ceremonial Single-Estate Matcha Green Tea",
+      price: 24.00,
+      category: "Groceries",
+      image: "product26.jpg"
+    },
+    {
+      id: 27,
+      name: "Single-Origin 72% Artisanal Dark Chocolate",
+      price: 7.50,
+      category: "Groceries",
+      image: "product27.jpg"
+    },
+    {
+      id: 28,
+      name: "Roasted & Salted California Almonds (500g)",
+      price: 12.50,
+      category: "Groceries",
+      image: "product28.jpg"
+    },
+    {
+      id: 29,
+      name: "Pure Grade-A Canadian Maple Syrup",
+      price: 15.00,
+      category: "Groceries",
+      image: "product29.jpg"
+    },
+    {
+      id: 30,
+      name: "Fresh Harvest Wild Organic Berry Basket",
+      price: 9.95,
+      category: "Groceries",
+      image: "product30.jpg"
     }
   ];
 
@@ -948,7 +1099,19 @@
       clearCartBtn.addEventListener("click", clearCart);
     }
 
-    // 12. Keyboard Navigation: Escape key closes any active modal
+    // 12. Hero "Shop Now" Smooth Scrolling
+    const heroShopNowBtn = document.getElementById("hero-shop-now-btn");
+    if (heroShopNowBtn) {
+      heroShopNowBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.getElementById("products-section");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    }
+
+    // 13. Keyboard Navigation: Escape key closes any active modal
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (orderSuccessModal && !orderSuccessModal.hasAttribute("hidden")) {
